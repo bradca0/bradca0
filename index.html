@@ -33,8 +33,6 @@
       min-height: 100vh;
       transition: background 0.3s, color 0.3s;
     }
-
-    /* NAV */
     nav {
       display: flex;
       align-items: center;
@@ -78,16 +76,10 @@
       transition: background 0.2s;
     }
     .theme-btn:hover { background: var(--accent-light); }
-
-    /* MAIN */
     main { max-width: 860px; margin: 48px auto; padding: 0 24px; }
-
-    /* PAGE SECTIONS */
     .page { display: none; }
     .page.active { display: block; animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* HOME CARD */
     .home-card {
       background: var(--card-bg);
       border: 1.5px solid var(--accent);
@@ -110,11 +102,7 @@
       margin-bottom: 12px;
     }
     .home-card p a { color: var(--accent); text-decoration: underline; }
-    .photo-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: 28px;
-    }
+    .photo-wrap { display: flex; justify-content: center; margin-top: 28px; }
     .photo-wrap img {
       width: 220px;
       height: 220px;
@@ -122,22 +110,14 @@
       border-radius: 50%;
       border: 3px solid var(--accent);
     }
-
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px;
       color: var(--muted);
       font-size: 14px;
     }
-    footer a {
-      color: var(--text);
-      text-decoration: underline;
-      margin: 0 6px;
-    }
+    footer a { color: var(--text); text-decoration: underline; margin: 0 6px; }
     footer a:hover { color: var(--accent); }
-
-    /* SECTION CARDS */
     .section-card {
       background: var(--card-bg);
       border: 1.5px solid var(--border);
@@ -151,18 +131,12 @@
       margin-bottom: 24px;
       color: var(--accent);
     }
-
-    /* ENTRY BLOCKS */
     .entry {
       margin-bottom: 28px;
       padding-bottom: 28px;
       border-bottom: 1px solid var(--border);
     }
-    .entry:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
+    .entry:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
     .entry-header {
       display: flex;
       justify-content: space-between;
@@ -171,36 +145,12 @@
       margin-bottom: 6px;
       flex-wrap: wrap;
     }
-    .entry-title {
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text);
-    }
-    .entry-date {
-      font-size: 0.85rem;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .entry-subtitle {
-      font-size: 0.9rem;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    .entry-body {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--muted);
-    }
+    .entry-title { font-weight: 600; font-size: 1rem; color: var(--text); }
+    .entry-date { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+    .entry-subtitle { font-size: 0.9rem; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
+    .entry-body { font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
     .entry-body a { color: var(--accent); text-decoration: underline; }
-
-    /* STAT PILLS */
-    .stats-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
+    .stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
     .stat-pill {
       background: var(--accent-light);
       color: var(--accent);
@@ -209,8 +159,6 @@
       font-size: 0.9rem;
       font-weight: 600;
     }
-
-    /* AP GRID */
     .ap-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -235,8 +183,6 @@
       font-weight: 700;
       font-size: 0.82rem;
     }
-
-    /* SECTION LABEL */
     .section-label {
       font-size: 0.75rem;
       font-weight: 700;
@@ -267,7 +213,6 @@
 
 <main>
 
-  <!-- HOME -->
   <div id="home" class="page active">
     <div class="home-card">
       <h1>Brad Cao</h1>
@@ -280,7 +225,6 @@
     </div>
   </div>
 
-  <!-- SCHOOL -->
   <div id="school" class="page">
     <div class="section-card">
       <h2>School</h2>
@@ -305,7 +249,6 @@
     </div>
   </div>
 
-  <!-- ACHIEVEMENTS -->
   <div id="achievements" class="page">
     <div class="section-card">
       <h2>Achievements</h2>
@@ -313,7 +256,7 @@
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Top Poster Award</div>
-          <div class="entry-date">2024</div>
+          <div class="entry-date">2025</div>
         </div>
         <div class="entry-subtitle">American Society for Clinical Pharmacology & Therapeutics — National Conference</div>
         <div class="entry-body">Awarded top poster recognition at one of the nation's premier clinical pharmacology conferences, for research on predictive modeling of serious adverse drug outcomes in stimulant-treated patients.</div>
@@ -354,7 +297,6 @@
     </div>
   </div>
 
-  <!-- RESEARCH -->
   <div id="research" class="page">
     <div class="section-card">
       <h2>Research</h2>
@@ -366,16 +308,13 @@
         </div>
         <div class="entry-subtitle">University of Maryland, Baltimore — Department of Pharmacy Practice & Science</div>
         <div class="entry-body">
-          Conducted clinical pharmacology research under faculty mentorship, working with over a decade of FDA adverse event reporting data. The project focused on identifying ADHD patients at elevated risk of serious adverse outcomes from stimulant treatments using real-world evidence.
-          <br><br>
-          Led the full data pipeline design, feature engineering from raw FDA submissions, and the development and optimization of a random forest classification model. Findings were presented as an award-winning poster at the 2024 ASCPT National Conference, and a follow-up study was accepted for the 2025 conference.
+          Conducted clinical pharmacology research under faculty mentorship, working with over a decade of FDA adverse event reporting data. The project focused on identifying ADHD patients at elevated risk of serious adverse outcomes from stimulant treatments using real-world evidence. Led the full data pipeline design, feature engineering from raw FDA submissions, and the development and optimization of a random forest classification model. Findings were presented as an award-winning poster at the 2025 ASCPT National Conference.
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- PUBLICATIONS -->
   <div id="publications" class="page">
     <div class="section-card">
       <h2>Publications</h2>
@@ -401,7 +340,6 @@
     </div>
   </div>
 
-  <!-- VOLUNTEERING -->
   <div id="volunteering" class="page">
     <div class="section-card">
       <h2>Volunteering</h2>
@@ -425,7 +363,6 @@
     </div>
   </div>
 
-  <!-- PROJECTS -->
   <div id="projects" class="page">
     <div class="section-card">
       <h2>Projects</h2>
@@ -445,7 +382,6 @@
     </div>
   </div>
 
-  <!-- ATHLETICS -->
   <div id="athletics" class="page">
     <div class="section-card">
       <h2>Athletics</h2>
