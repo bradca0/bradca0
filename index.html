@@ -26,171 +26,43 @@
       --border: #2a2a2a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 32px;
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background 0.3s, color 0.3s; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.3s; }
     .nav-left { display: flex; gap: 10px; align-items: center; }
     .nav-right { display: flex; gap: 8px; flex-wrap: wrap; }
-    .nav-btn {
-      border: 1.5px solid var(--nav-border);
-      background: transparent;
-      color: var(--text);
-      padding: 6px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
-    }
-    .nav-btn:hover, .nav-btn.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-    .theme-btn {
-      border: 1.5px solid var(--nav-border);
-      background: transparent;
-      color: var(--text);
-      width: 36px; height: 36px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-    }
+    .nav-btn { border: 1.5px solid var(--nav-border); background: transparent; color: var(--text); padding: 6px 16px; border-radius: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    .nav-btn:hover, .nav-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+    .theme-btn { border: 1.5px solid var(--nav-border); background: transparent; color: var(--text); width: 36px; height: 36px; border-radius: 6px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
     .theme-btn:hover { background: var(--accent-light); }
     main { max-width: 860px; margin: 48px auto; padding: 0 24px; }
     .page { display: none; }
     .page.active { display: block; animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .home-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--accent);
-      border-radius: 12px;
-      padding: 40px;
-      margin-bottom: 32px;
-    }
-    .home-card h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-    .home-card p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--muted);
-      max-width: 600px;
-      margin-bottom: 12px;
-    }
+    .home-card { background: var(--card-bg); border: 1.5px solid var(--accent); border-radius: 12px; padding: 40px; margin-bottom: 32px; }
+    .home-card h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
+    .home-card p { font-size: 1rem; line-height: 1.7; color: var(--muted); max-width: 600px; margin-bottom: 12px; }
     .home-card p a { color: var(--accent); text-decoration: underline; }
     .photo-wrap { display: flex; justify-content: center; margin-top: 28px; }
-    .photo-wrap img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .photo-wrap img { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); }
+    footer { text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
     footer a { color: var(--text); text-decoration: underline; margin: 0 6px; }
     footer a:hover { color: var(--accent); }
-    .section-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin-bottom: 20px;
-    }
-    .section-card h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-bottom: 24px;
-      color: var(--accent);
-    }
-    .entry {
-      margin-bottom: 28px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-    }
+    .section-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 40px; margin-bottom: 20px; }
+    .section-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 24px; color: var(--accent); }
+    .entry { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
     .entry:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
+    .entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
     .entry-title { font-weight: 600; font-size: 1rem; color: var(--text); }
     .entry-date { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
     .entry-subtitle { font-size: 0.9rem; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
     .entry-body { font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
     .entry-body a { color: var(--accent); text-decoration: underline; }
     .stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
-    .stat-pill {
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 6px 18px;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .ap-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .ap-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-size: 0.88rem;
-    }
-    .ap-score {
-      background: var(--accent);
-      color: white;
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-weight: 700;
-      font-size: 0.82rem;
-    }
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
+    .stat-pill { background: var(--accent-light); color: var(--accent); border-radius: 999px; padding: 6px 18px; font-size: 0.9rem; font-weight: 600; }
+    .ap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-top: 8px; }
+    .ap-item { display: flex; justify-content: space-between; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; }
+    .ap-score { background: var(--accent); color: white; border-radius: 4px; padding: 2px 8px; font-weight: 700; font-size: 0.82rem; }
+    .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 14px; }
   </style>
 </head>
 <body>
@@ -253,7 +125,6 @@
   <div id="achievements" class="page">
     <div class="section-card">
       <h2>Achievements</h2>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Top Poster Award</div>
@@ -262,7 +133,6 @@
         <div class="entry-subtitle">American Society for Clinical Pharmacology & Therapeutics — National Conference</div>
         <div class="entry-body">Awarded top poster recognition at one of the nation's premier clinical pharmacology conferences, for research on predictive modeling of serious adverse drug outcomes in stimulant-treated patients.</div>
       </div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">National Champion — Data Analysis</div>
@@ -271,7 +141,6 @@
         <div class="entry-subtitle">FBLA National Leadership Conference</div>
         <div class="entry-body">Placed 1st nationally in the Data Analysis event at the Future Business Leaders of America National Leadership Conference, competing against thousands of students across the country.</div>
       </div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Congressional Citation Awardee</div>
@@ -279,7 +148,6 @@
         </div>
         <div class="entry-body">Received a formal citation from the U.S. Congress in recognition of outstanding community contributions and achievements.</div>
       </div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">1st Team USA Fencing All-American</div>
@@ -287,7 +155,6 @@
         </div>
         <div class="entry-body">Named to the USA Fencing 1st Team All-American squad in Men's Epee, one of the highest individual honors in U.S. competitive fencing.</div>
       </div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">USACO Silver Division</div>
@@ -296,32 +163,26 @@
         <div class="entry-subtitle">USA Computing Olympiad</div>
         <div class="entry-body">Achieved Silver division standing in the USA Computing Olympiad, a highly selective national algorithmic programming competition.</div>
       </div>
-
     </div>
   </div>
 
   <div id="research" class="page">
     <div class="section-card">
       <h2>Research</h2>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Research Intern</div>
           <div class="entry-date">2023 – 2025</div>
         </div>
         <div class="entry-subtitle">University of Maryland, Baltimore — Department of Pharmacy Practice & Science</div>
-        <div class="entry-body">
-          Conducted clinical pharmacology research under faculty mentorship, working with over a decade of FDA adverse event reporting data. The project focused on identifying ADHD patients at elevated risk of serious adverse outcomes from stimulant treatments using real-world evidence. Led the full data pipeline design, feature engineering from raw FDA submissions, and the development and optimization of a random forest classification model. Findings were presented as an award-winning poster at the 2025 ASCPT National Conference.
-        </div>
+        <div class="entry-body">Conducted clinical pharmacology research under faculty mentorship, working with over a decade of FDA adverse event reporting data. The project focused on identifying ADHD patients at elevated risk of serious adverse outcomes from stimulant treatments using real-world evidence. Led the full data pipeline design, feature engineering from raw FDA submissions, and the development and optimization of a random forest classification model. Findings were presented as an award-winning poster at the 2025 ASCPT National Conference.</div>
       </div>
-
     </div>
   </div>
 
   <div id="publications" class="page">
     <div class="section-card">
       <h2>Publications</h2>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data</div>
@@ -330,7 +191,6 @@
         <div class="entry-subtitle">ASCPT Annual Meeting · Washington, DC · May 28–31, 2025</div>
         <div class="entry-body"><strong>Cao, B.</strong>, Lee S., Naga A., Gobburu J., Dunn A.</div>
       </div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Predictive Modeling of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals</div>
@@ -339,14 +199,12 @@
         <div class="entry-subtitle">ASCPT Annual Meeting · Colorado Springs, CO · March 27–29, 2024</div>
         <div class="entry-body"><strong>Cao, B.</strong>, Gupta P., Dunn A.</div>
       </div>
-
     </div>
   </div>
 
   <div id="volunteering" class="page">
     <div class="section-card">
       <h2>Volunteering</h2>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Co-Founder</div>
@@ -354,7 +212,6 @@
         <div class="entry-subtitle">MyCureHope</div>
         <div class="entry-body">Co-developed an open-source disease treatment database now serving 33,000 users across 78 countries. Built symptom-based search functionality and data aggregation algorithms that compile treatment information from multiple medical sources, helping patients and families navigate care options more easily. Visit at <a href="https://www.mycurehope.org/" target="_blank">mycurehope.org</a>.</div>
       </div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">Co-Founder</div>
@@ -362,33 +219,25 @@
         <div class="entry-subtitle">We Speak On</div>
         <div class="entry-body">Co-organized a global public speaking competition that drew over 2,000 competitors from 32 countries. Managed outreach, logistics, and judging coordination, and raised over $1,000 in scholarships to support student participants from underrepresented backgrounds.</div>
       </div>
-
     </div>
   </div>
 
   <div id="projects" class="page">
     <div class="section-card">
       <h2>Projects</h2>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">MyCureHope</div>
         </div>
         <div class="entry-subtitle"><a href="https://www.mycurehope.org/" target="_blank">mycurehope.org</a></div>
-        <div class="entry-body">
-          MyCureHope is an open-source disease treatment database built to make medical information more accessible to patients and families worldwide. Rather than requiring users to know their exact diagnosis, the platform allows people to search for potential treatments based on symptoms — a more intuitive approach to navigating complex healthcare information.
-          <br><br>
-          The platform now serves 33,000 users across 78 countries. It integrates data aggregation algorithms that compile and organize treatment data from multiple trusted sources, helping individuals identify relevant options and better understand the pathways of care available to them.
-        </div>
+        <div class="entry-body">MyCureHope is an open-source disease treatment database built to make medical information more accessible to patients and families worldwide. Rather than requiring users to know their exact diagnosis, the platform allows people to search for potential treatments based on symptoms — a more intuitive approach to navigating complex healthcare information.<br><br>The platform now serves 33,000 users across 78 countries. It integrates data aggregation algorithms that compile and organize treatment data from multiple trusted sources, helping individuals identify relevant options and better understand the pathways of care available to them.</div>
       </div>
-
     </div>
   </div>
 
   <div id="athletics" class="page">
     <div class="section-card">
       <h2>Athletics</h2>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">USA Fencing — Men's Epee</div>
@@ -396,9 +245,7 @@
         <div class="entry-subtitle">1st Team All-American</div>
         <div class="entry-body">Competing nationally in Men's Epee on the North American Cup (NAC) circuit. Ranked Top 30 among cadets nationally (2024 season) and Top 50 among juniors (2025 season).</div>
       </div>
-
       <div class="section-label" style="margin-top: 8px;">Notable Results</div>
-
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">27th Place — November NAC</div>
@@ -423,7 +270,6 @@
           <div class="entry-date">2023</div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -431,12 +277,12 @@
 
 <footer>
   <a href="https://www.instagram.com/brad_ca00" target="_blank">Instagram</a> •
-  <a href="/cdn-cgi/l/email-protection#d1b3b2b0bee5e1e5e891b6bcb0b8bdffb2bebc">Email</a> •
+  <a href="mailto:bcao4049@gmail.com">Email</a> •
   <a href="resume.pdf">Resume</a> •
   <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank">LinkedIn</a>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function showPage(id, btn) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -447,4 +293,10 @@
   function toggleTheme() {
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('d
+    html.setAttribute('data-theme', isDark ? '' : 'dark');
+    document.querySelector('.theme-btn').textContent = isDark ? '🌙' : '☀️';
+  }
+</script>
+
+</body>
+</html>
