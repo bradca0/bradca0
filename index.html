@@ -2,10 +2,277 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brad Cao</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --card-bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #2d6a4f;
+      --accent-light: #d8f3dc;
+      --border: #e0ddd8;
+      --nav-border: #2d6a4f;
+    }
+    [data-theme="dark"] {
+      --bg: #0f0f0f;
+      --card-bg: #1a1a1a;
+      --text: #f0ece4;
+      --muted: #999;
+      --accent: #52b788;
+      --accent-light: #1b3a2d;
+      --border: #2a2a2a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-left { display: flex; gap: 10px; align-items: center; }
+    .nav-right { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-btn {
+      border: 1.5px solid var(--nav-border);
+      background: transparent;
+      color: var(--text);
+      padding: 6px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .theme-btn {
+      border: 1.5px solid var(--nav-border);
+      background: transparent;
+      color: var(--text);
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .theme-btn:hover { background: var(--accent-light); }
+
+    /* MAIN */
+    main { max-width: 860px; margin: 48px auto; padding: 0 24px; }
+
+    /* PAGE SECTIONS */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* HOME CARD */
+    .home-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--accent);
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 32px;
+    }
+    .home-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .home-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 12px;
+    }
+    .home-card p a { color: var(--accent); text-decoration: underline; }
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .photo-wrap img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer a {
+      color: var(--text);
+      text-decoration: underline;
+      margin: 0 6px;
+    }
+    footer a:hover { color: var(--accent); }
+
+    /* SECTION PAGES */
+    .section-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    .section-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .section-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .placeholder-text {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Brad Cao</h1>
-  <p>Student | Policy | Debate | Research</p>
+
+<nav>
+  <div class="nav-left">
+    <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
+  </div>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="showPage('school', this)">School</button>
+    <button class="nav-btn" onclick="showPage('achievements', this)">Achievements</button>
+    <button class="nav-btn" onclick="showPage('research', this)">Research</button>
+    <button class="nav-btn" onclick="showPage('publications', this)">Publications</button>
+    <button class="nav-btn" onclick="showPage('volunteering', this)">Volunteering</button>
+    <button class="nav-btn" onclick="showPage('projects', this)">Projects</button>
+    <button class="nav-btn" onclick="showPage('athletics', this)">Athletics</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HOME -->
+  <div id="home" class="page active">
+    <div class="home-card">
+      <h1>Brad Cao</h1>
+      <p>Driven by hard questions — in public policy, healthcare, artificial intelligence, economics, and all things thought provoking.</p>
+      <p>You can also check out my resume <a href="#">here</a>.</p>
+      <div class="photo-wrap">
+        <img src="photo.png" alt="Brad Cao" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHOOL -->
+  <div id="school" class="page">
+    <div class="section-card">
+      <h2>School</h2>
+      <p class="placeholder-text">Add your school, GPA, coursework, and other academic details here.</p>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div id="achievements" class="page">
+    <div class="section-card">
+      <h2>Achievements</h2>
+      <p class="placeholder-text">List your awards, honors, competitions, and other accomplishments here.</p>
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <div id="research" class="page">
+    <div class="section-card">
+      <h2>Research</h2>
+      <p class="placeholder-text">Describe your research projects, labs, mentors, and findings here.</p>
+    </div>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div id="publications" class="page">
+    <div class="section-card">
+      <h2>Publications</h2>
+      <p class="placeholder-text">List your published papers, articles, or writings here.</p>
+    </div>
+  </div>
+
+  <!-- VOLUNTEERING -->
+  <div id="volunteering" class="page">
+    <div class="section-card">
+      <h2>Volunteering</h2>
+      <p class="placeholder-text">Describe your volunteer work and community involvement here.</p>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects" class="page">
+    <div class="section-card">
+      <h2>Projects</h2>
+      <p class="placeholder-text">Showcase your personal and professional projects here.</p>
+    </div>
+  </div>
+
+  <!-- ATHLETICS -->
+  <div id="athletics" class="page">
+    <div class="section-card">
+      <h2>Athletics</h2>
+      <p class="placeholder-text">Share your sports, athletic achievements, and teams here.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <a href="https://www.instagram.com/brad_ca00" target="_blank">Instagram</a> •
+  <a href="mailto:bcao4049@gmail.com">Email</a> •
+  <a href="#">Resume</a> •
+  <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank">LinkedIn</a>
+</footer>
+
+<script>
+  function showPage(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? '' : 'dark');
+    document.querySelector('.theme-btn').textContent = isDark ? '🌙' : '☀️';
+  }
+</script>
+
 </body>
 </html>
