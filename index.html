@@ -223,6 +223,11 @@
         <img src="profile.jpg" alt="Brad Cao">
       </div>
     </div>
+    <div class="home-card" style="margin-top: 20px;">
+      <p style="font-size: 1.05rem; color: var(--text); font-weight: 500; margin-bottom: 16px;">Excited to meet smart people! Reach out to me about anything, a project, book recommendation or just want to chat. <a href="mailto:bcao4049@gmail.com">Reach out to me</a> if you're looking for smart people!</p>
+      <p style="color: var(--muted); margin-bottom: 4px;">The best way to reach me:</p>
+      <p><a href="mailto:bcao4049@gmail.com">bcao4049@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/brad_ca00" target="_blank">Instagram</a></p>
+    </div>
   </div>
 
   <div id="school" class="page">
@@ -430,12 +435,12 @@
 
 <footer>
   <a href="https://www.instagram.com/brad_ca00" target="_blank">Instagram</a> •
-  <a href="mailto:bcao4049@gmail.com">Email</a> •
+  <a href="/cdn-cgi/l/email-protection#d1b3b2b0bee5e1e5e891b6bcb0b8bdffb2bebc">Email</a> •
   <a href="resume.pdf">Resume</a> •
   <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank">LinkedIn</a>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function showPage(id, btn) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -446,10 +451,4 @@
   function toggleTheme() {
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? '' : 'dark');
-    document.querySelector('.theme-btn').textContent = isDark ? '🌙' : '☀️';
-  }
-</script>
-
-</body>
-</html>
+    html.setAttribute('d
