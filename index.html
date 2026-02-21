@@ -137,27 +137,113 @@
     }
     footer a:hover { color: var(--accent); }
 
-    /* SECTION PAGES */
+    /* SECTION CARDS */
     .section-card {
       background: var(--card-bg);
       border: 1.5px solid var(--border);
       border-radius: 12px;
       padding: 40px;
+      margin-bottom: 20px;
     }
     .section-card h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       color: var(--accent);
     }
-    .section-card p {
-      color: var(--muted);
-      line-height: 1.7;
+
+    /* ENTRY BLOCKS */
+    .entry {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
     }
-    .placeholder-text {
+    .entry:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .entry-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .entry-date {
+      font-size: 0.85rem;
       color: var(--muted);
-      font-style: italic;
+      white-space: nowrap;
+    }
+    .entry-subtitle {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .entry-body {
       font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .entry-body a { color: var(--accent); text-decoration: underline; }
+
+    /* STAT PILLS */
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .stat-pill {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* AP GRID */
+    .ap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .ap-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+    }
+    .ap-score {
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      margin-bottom: 14px;
     }
   </style>
 </head>
@@ -186,9 +272,10 @@
     <div class="home-card">
       <h1>Brad Cao</h1>
       <p>Driven by hard questions — in public policy, healthcare, artificial intelligence, economics, and all things thought provoking.</p>
-      <p>You can also check out my resume <a href="resume.pdf">here</a>
+      <p>I'm a high school student based in Maryland with experience in clinical pharmacology research, competitive programming, national-level fencing, and building technology used by people around the world.</p>
+      <p>You can also check out my resume <a href="resume.pdf">here</a>.</p>
       <div class="photo-wrap">
-        <img src="https://imgur.com/a/JJJt2et" alt="Brad Cao">
+        <img src="profile.jpg" alt="Brad Cao">
       </div>
     </div>
   </div>
@@ -197,11 +284,24 @@
   <div id="school" class="page">
     <div class="section-card">
       <h2>School</h2>
-      <p class="placeholder-text">
-        GPA: 4.0 UW/ 4.93 W
-        SAT: 1550
-        AP Classes: AP Calculus BC (5), AP Computer Science A (4), AP English Language and Composition (4), AP Macroeconomics (5), AP Microeconomics (5), AP Physics C: Mechanics (5), AP United States History (5), AP Calculus AB (5), AP Physics 1 (5), AP United States Government and Politics (5), AP Computer Science Principles (5)
-      </p>
+      <div class="stats-row">
+        <div class="stat-pill">GPA: 4.0 UW / 4.93 W</div>
+        <div class="stat-pill">SAT: 1550</div>
+      </div>
+      <div class="section-label">AP Courses & Exam Scores</div>
+      <div class="ap-grid">
+        <div class="ap-item"><span>Calculus BC</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Calculus AB</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Physics C: Mechanics</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Physics 1</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Macroeconomics</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Microeconomics</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>US History</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>US Gov & Politics</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Computer Science Principles</span><span class="ap-score">5</span></div>
+        <div class="ap-item"><span>Computer Science A</span><span class="ap-score">4</span></div>
+        <div class="ap-item"><span>English Language & Comp</span><span class="ap-score">4</span></div>
+      </div>
     </div>
   </div>
 
@@ -209,13 +309,48 @@
   <div id="achievements" class="page">
     <div class="section-card">
       <h2>Achievements</h2>
-      <p class="placeholder-text">
-        Top Poster Award (American Society Clinical Pharmacology & Therapeutics National Conference)
-        National Champion, FBLA National Leadership Conference (Data Analysis)
-        Congressional Citation Awardee
-        1st Team USA Fencing All-American
-        USACO Silver
-      </p>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Top Poster Award</div>
+          <div class="entry-date">2024</div>
+        </div>
+        <div class="entry-subtitle">American Society for Clinical Pharmacology & Therapeutics — National Conference</div>
+        <div class="entry-body">Awarded top poster recognition at one of the nation's premier clinical pharmacology conferences, for research on predictive modeling of serious adverse drug outcomes in stimulant-treated patients.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">National Champion — Data Analysis</div>
+          <div class="entry-date">2024</div>
+        </div>
+        <div class="entry-subtitle">FBLA National Leadership Conference</div>
+        <div class="entry-body">Placed 1st nationally in the Data Analysis event at the Future Business Leaders of America National Leadership Conference, competing against thousands of students across the country.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Congressional Citation Awardee</div>
+        </div>
+        <div class="entry-body">Received a formal citation from the U.S. Congress in recognition of outstanding community contributions and achievements.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">1st Team USA Fencing All-American</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-body">Named to the USA Fencing 1st Team All-American squad in Men's Epee, one of the highest individual honors in U.S. competitive fencing.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">USACO Silver Division</div>
+        </div>
+        <div class="entry-subtitle">USA Computing Olympiad</div>
+        <div class="entry-body">Achieved Silver division standing in the USA Computing Olympiad, a highly selective national algorithmic programming competition.</div>
+      </div>
+
     </div>
   </div>
 
@@ -223,10 +358,20 @@
   <div id="research" class="page">
     <div class="section-card">
       <h2>Research</h2>
-      <p class="placeholder-text">
-      Research Intern @ University of Maryland, Baltimore
-        Developed predictive models using 10 years of FDA data to identify ADHD patients at risk of serious adverse outcomes. Led data pipeline design, built random-forest model, model optimization, and award-winning poster. 
-      </p>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Research Intern</div>
+          <div class="entry-date">2023 – 2025</div>
+        </div>
+        <div class="entry-subtitle">University of Maryland, Baltimore — Department of Pharmacy Practice & Science</div>
+        <div class="entry-body">
+          Conducted clinical pharmacology research under faculty mentorship, working with over a decade of FDA adverse event reporting data. The project focused on identifying ADHD patients at elevated risk of serious adverse outcomes from stimulant treatments using real-world evidence.
+          <br><br>
+          Led the full data pipeline design, feature engineering from raw FDA submissions, and the development and optimization of a random forest classification model. Findings were presented as an award-winning poster at the 2024 ASCPT National Conference, and a follow-up study was accepted for the 2025 conference.
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -234,11 +379,25 @@
   <div id="publications" class="page">
     <div class="section-card">
       <h2>Publications</h2>
-      <p class="placeholder-text">
-        Cao, B., Gupta, P., Dunn, A., “Predictive Moldering of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals.” American Society for Clinical Pharmacology and Therapeutics Annual Meeting, Colorado Springs, Colorado, March 27-29 2024.
 
-        Cao, B., Lee S., Naga A., Gobburu J., Dunn A., “Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data.” American Society for Clinical Pharmacology and Therapeutics Annual Meeting, Washington, DC, May 28 - 31, 2025.
-      </p>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-subtitle">ASCPT Annual Meeting · Washington, DC · May 28–31, 2025</div>
+        <div class="entry-body"><strong>Cao, B.</strong>, Lee S., Naga A., Gobburu J., Dunn A.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Predictive Modeling of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals</div>
+          <div class="entry-date">2024</div>
+        </div>
+        <div class="entry-subtitle">ASCPT Annual Meeting · Colorado Springs, CO · March 27–29, 2024</div>
+        <div class="entry-body"><strong>Cao, B.</strong>, Gupta P., Dunn A.</div>
+      </div>
+
     </div>
   </div>
 
@@ -246,11 +405,23 @@
   <div id="volunteering" class="page">
     <div class="section-card">
       <h2>Volunteering</h2>
-      <p class="placeholder-text">
-        Co-Founder at MyCureHope: Co-developed open source disease treatment database with 33k users in 78 countries. Built symptom-based search and data aggregation algorithms.
 
-        Co-Founder of We Speak On: Organized public speaking competition with 2,000+ competitors in 32 countries. Raised $1k+ in scholarships.
-      </p>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Co-Founder</div>
+        </div>
+        <div class="entry-subtitle">MyCureHope</div>
+        <div class="entry-body">Co-developed an open-source disease treatment database now serving 33,000 users across 78 countries. Built symptom-based search functionality and data aggregation algorithms that compile treatment information from multiple medical sources, helping patients and families navigate care options more easily. Visit at <a href="https://www.mycurehope.org/" target="_blank">mycurehope.org</a>.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Co-Founder</div>
+        </div>
+        <div class="entry-subtitle">We Speak On</div>
+        <div class="entry-body">Co-organized a global public speaking competition that drew over 2,000 competitors from 32 countries. Managed outreach, logistics, and judging coordination, and raised over $1,000 in scholarships to support student participants from underrepresented backgrounds.</div>
+      </div>
+
     </div>
   </div>
 
@@ -258,10 +429,19 @@
   <div id="projects" class="page">
     <div class="section-card">
       <h2>Projects</h2>
-      <p class="placeholder-text">
-        MyCureHope is an open-source disease treatment database designed to make medical information more accessible and actionable for patients and families worldwide.Serving 33,000 users across 78 countries, the platform allows individuals to search for potential treatments based on symptoms rather than just diagnoses. It also integrates data aggregation algorithms that compile and organize treatment information from multiple sources, helping users quickly identify relevant options and better understand available care pathways.
-        https://www.mycurehope.org/
-      </p>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">MyCureHope</div>
+        </div>
+        <div class="entry-subtitle"><a href="https://www.mycurehope.org/" target="_blank">mycurehope.org</a></div>
+        <div class="entry-body">
+          MyCureHope is an open-source disease treatment database built to make medical information more accessible to patients and families worldwide. Rather than requiring users to know their exact diagnosis, the platform allows people to search for potential treatments based on symptoms — a more intuitive approach to navigating complex healthcare information.
+          <br><br>
+          The platform now serves 33,000 users across 78 countries. It integrates data aggregation algorithms that compile and organize treatment data from multiple trusted sources, helping individuals identify relevant options and better understand the pathways of care available to them.
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -269,12 +449,42 @@
   <div id="athletics" class="page">
     <div class="section-card">
       <h2>Athletics</h2>
-      <p class="placeholder-text">
-        USA Fencing 1st Team All-American
-        - Ranked Top 50 in Junior Men's Epee (2025 Season)
-        - Ranked Top 30 in Cadet Men's Epee (2024 Season)
-        - Notable results: 27th at November NAC 2024, 28th at April NAC 2024, 32nd at October NAC 2023, 24th at National Championships 2023
-      </p>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">USA Fencing — Men's Epee</div>
+        </div>
+        <div class="entry-subtitle">1st Team All-American</div>
+        <div class="entry-body">Competing nationally in Men's Epee on the North American Cup (NAC) circuit. Ranked Top 30 among cadets nationally (2024 season) and Top 50 among juniors (2025 season).</div>
+      </div>
+
+      <div class="section-label" style="margin-top: 8px;">Notable Results</div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">27th Place — November NAC</div>
+          <div class="entry-date">2024</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">28th Place — April NAC</div>
+          <div class="entry-date">2024</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">24th Place — National Championships</div>
+          <div class="entry-date">2023</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">32nd Place — October NAC</div>
+          <div class="entry-date">2023</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -283,7 +493,7 @@
 <footer>
   <a href="https://www.instagram.com/brad_ca00" target="_blank">Instagram</a> •
   <a href="mailto:bcao4049@gmail.com">Email</a> •
-  <a href="#">Resume</a> •
+  <a href="resume.pdf">Resume</a> •
   <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank">LinkedIn</a>
 </footer>
 
