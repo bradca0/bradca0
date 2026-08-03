@@ -1,6 +1,6 @@
 ## Brad Cao
 
-Quant research. Market microstructure, statistical inference, reproducible experiments.
+Interested in quant research, market microstructure, statistical inference, and reproducible experiments. Always excited to meet other really ambitious people!
 
 ---
 
