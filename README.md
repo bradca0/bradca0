@@ -23,9 +23,13 @@ Python · NumPy · scikit-learn · 263 tests · 95.7% coverage · `mypy --strict
 
 ### [PolyEdge](https://github.com/bradca0/PolyEdge) — is prediction-market skill real or variance?
 
-Reconstructs per-wallet PnL from Polymarket on-chain trades, scores trader skill net of
-variance, backtests skill-weighted forecasts against market price. Clean lab for it:
-fills are wallet-attributable and markets resolve 0/1, so the labels are exact.
+Rebuilds per-wallet PnL from Polymarket on-chain activity and validates it against the
+exchange: **92% of positions match exactly**, 43 of 51 wallets reconcile perfectly. Scores
+trader skill net of variance — population raw edge **+0.126 collapses to −0.095** once
+shrunk, so the apparent edge is mostly luck.
+
+Then backtests it point-in-time. **The signal does not beat the price**: Brier 0.2088 vs the
+market's 0.2046, ROI −3.3% after costs. That's the result, reported as-is.
 
 Python · three public APIs, no auth · data and backtests, no execution
 
