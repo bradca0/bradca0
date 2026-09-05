@@ -180,6 +180,34 @@
       <h2>Projects</h2>
       <div class="entry">
         <div class="entry-header">
+          <div class="entry-title">orderbook-sim</div>
+        </div>
+        <div class="entry-subtitle"><a href="https://github.com/bradca0/orderbook-sim" target="_blank">github.com/bradca0/orderbook-sim</a></div>
+        <div class="entry-body">An event-driven limit order book simulator with exact price-time priority, built to test how much of a backtested edge survives realistic queue position. Most backtests fill your order the moment a trade prints at your price; real exchanges make you wait.<br><br>A strategy worth +214 ticks per episode under the standard fill assumption is worth +2.8 once the queue is modelled — 98.7% of the edge was the assumption rather than the strategy. The synthetic market is validated against published stylized facts (9 of 11 inside empirical bands), and every reported result carries paired bootstrap confidence intervals, Holm–Bonferroni correction, and a deflated Sharpe charged for all 24 configurations tried during development.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">polymarket-pnl</div>
+        </div>
+        <div class="entry-subtitle"><a href="https://github.com/bradca0/polymarket-pnl" target="_blank">github.com/bradca0/polymarket-pnl</a></div>
+        <div class="entry-body">Reconstructs per-wallet profit and loss from Polymarket on-chain activity and validates it against the exchange's own numbers: 92% of positions match exactly and 43 of 51 wallets reconcile perfectly.<br><br>It then asks whether apparent trader skill is real or variance. Population raw edge of +0.126 collapses to −0.095 once shrunk toward the mean, so most of the visible edge is luck. Backtested point-in-time, the skill-weighted signal does not beat the market price — Brier 0.2088 against the market's 0.2046, ROI −3.3% after costs. Reported as-is.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">threshold</div>
+        </div>
+        <div class="entry-subtitle"><a href="https://github.com/bradca0/threshold" target="_blank">github.com/bradca0/threshold</a></div>
+        <div class="entry-body">An empirical study of double descent: the observation that past a certain size, bigger models stop overfitting and start improving again. Sweeping a random-feature model through the interpolation threshold on MNIST, test error peaks at exactly p = n — 88.8% there against 24.4% at five times the size.<br><br>The mechanism is measured four independent ways from a single matrix decomposition per model: the fitted weights grow 313×, the feature matrix's smallest singular value collapses, a bias–variance decomposition puts 90.0% of the peak on variance, and a ridge penalty tuned per model size removes the peak entirely. Ensembling, which should reduce variance, fails at the threshold — the members' output scales differ by 10.5× there — and the repository reports that with its cause rather than omitting it.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">induction-heads</div>
+        </div>
+        <div class="entry-subtitle"><a href="https://github.com/bradca0/induction-heads" target="_blank">github.com/bradca0/induction-heads</a></div>
+        <div class="entry-body">A mechanistic-interpretability study of how language models learn from their own context. An induction head is an attention head that looks back for the last time it saw the current token and predicts whatever followed it. This scores all 144 attention heads in GPT-2 Small, locates them, and switches them off.<br><br>With the top four ablated, loss on a repeated random sequence rises from 0.23 to 7.83 nats, while ablating four matched control heads from the same layers leaves it at 0.27 — a separation of 86 standard errors. On aggregate in-context learning over natural prose the same intervention is much weaker and not statistically decisive, which the write-up states plainly rather than leading with the more flattering measurement.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
           <div class="entry-title">MyCureHope</div>
         </div>
         <div class="entry-subtitle"><a href="https://www.mycurehope.org/" target="_blank">mycurehope.org</a></div>
