@@ -1,7 +1,3 @@
 ## Brad Cao
 
-Interested in quant, math, and meeting other intelligent and ambitious people!
-
-email: bc3316 [at] columbia [dot] edu
-
-[bradca0.vercel.app](https://bradca0.vercel.app)
+Math + CS at Columbia. Interested in quant research, market microstructure, statistical inference, and reproducible experiments.

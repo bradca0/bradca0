@@ -4,288 +4,220 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brad Cao</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="Brad Cao — undergraduate at Columbia University studying mathematics and computer science.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f9f7f4;
-      --card-bg: #ffffff;
-      --text: #1a1a1a;
+      --bg: #ffffff;
+      --text: #000000;
       --muted: #6b6b6b;
-      --accent: #2d6a4f;
-      --accent-light: #d8f3dc;
-      --border: #e0ddd8;
-      --nav-border: #2d6a4f;
-    }
-    [data-theme="dark"] {
-      --bg: #0f0f0f;
-      --card-bg: #1a1a1a;
-      --text: #f0ece4;
-      --muted: #999;
-      --accent: #52b788;
-      --accent-light: #1b3a2d;
-      --border: #2a2a2a;
+      --faint: #9a9a9a;
+      --rule: #e6e6e6;
+      --link: #2b5fb3;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background 0.3s, color 0.3s; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid var(--border); transition: background 0.3s; }
-    .nav-left { display: flex; gap: 10px; align-items: center; }
-    .nav-right { display: flex; gap: 8px; flex-wrap: wrap; }
-    .nav-btn { border: 1.5px solid var(--nav-border); background: transparent; color: var(--text); padding: 6px 16px; border-radius: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; transition: background 0.2s, color 0.2s; }
-    .nav-btn:hover, .nav-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-    .theme-btn { border: 1.5px solid var(--nav-border); background: transparent; color: var(--text); width: 36px; height: 36px; border-radius: 6px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-    .theme-btn:hover { background: var(--accent-light); }
-    main { max-width: 860px; margin: 48px auto; padding: 0 24px; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 620px; margin: 0 auto; padding: 44px 24px 72px; }
+
+    header { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 36px; }
+    .name { font-weight: 600; font-size: 17px; color: var(--text); letter-spacing: -0.01em; }
+    .name:hover { text-decoration: none; }
+    nav { display: flex; gap: 18px; }
+    nav a { color: var(--muted); font-weight: 500; font-size: 15px; }
+    nav a:hover { color: var(--text); text-decoration: none; }
+    nav a.active { color: var(--text); font-weight: 600; }
+
     .page { display: none; }
-    .page.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .home-card { background: var(--card-bg); border: 1.5px solid var(--accent); border-radius: 12px; padding: 40px; margin-bottom: 32px; }
-    .home-card h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
-    .home-card p { font-size: 1rem; line-height: 1.7; color: var(--muted); max-width: 600px; margin-bottom: 12px; }
-    .home-card p a { color: var(--accent); text-decoration: underline; }
-    .photo-wrap { display: flex; justify-content: center; margin-top: 28px; }
-    .photo-wrap img { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); }
-    footer { text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
-    footer a { color: var(--text); text-decoration: underline; margin: 0 6px; }
-    footer a:hover { color: var(--accent); }
-    .section-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 40px; margin-bottom: 20px; }
-    .section-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 24px; color: var(--accent); }
-    .entry { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
-    .entry:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
-    .entry-title { font-weight: 600; font-size: 1rem; color: var(--text); }
-    .entry-date { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
-    .entry-subtitle { font-size: 0.9rem; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
-    .entry-body { font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
-    .entry-body a { color: var(--accent); text-decoration: underline; }
-    .stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
-    .stat-pill { background: var(--accent-light); color: var(--accent); border-radius: 999px; padding: 6px 18px; font-size: 0.9rem; font-weight: 600; }
-    .ap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-top: 8px; }
-    .ap-item { display: flex; justify-content: space-between; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; }
-    .ap-score { background: var(--accent); color: white; border-radius: 4px; padding: 2px 8px; font-weight: 700; font-size: 0.82rem; }
-    .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 14px; }
+    .page.active { display: block; }
+
+    /* About */
+    .photo { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: 24px; }
+    .about p { margin-bottom: 18px; }
+    .about p:last-of-type { margin-bottom: 0; }
+
+    .icons { display: flex; gap: 16px; margin-top: 28px; }
+    .icons a { color: var(--text); display: inline-flex; width: 20px; height: 20px; }
+    .icons a:hover { color: var(--muted); text-decoration: none; }
+    .icons svg { width: 20px; height: 20px; }
+
+    /* Lists */
+    h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin: 32px 0 14px; }
+    h2:first-child { margin-top: 0; }
+    .item { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .item:last-child { border-bottom: none; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+    .title { font-weight: 600; font-size: 16px; color: var(--text); }
+    .title a { color: var(--link); }
+    .date { color: var(--faint); font-size: 14px; white-space: nowrap; }
+    .sub { color: var(--muted); font-size: 15px; margin-top: 2px; }
+    .body { font-size: 15px; color: var(--text); margin-top: 8px; }
+    .body ul { padding-left: 18px; }
+    .body li { margin-bottom: 4px; }
+    .body li:last-child { margin-bottom: 0; }
+    .body p + p { margin-top: 8px; }
+
+    /* Publications */
+    .pub { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .pub:last-child { border-bottom: none; }
+    .pub .ptitle { color: var(--link); font-weight: 500; font-size: 16px; }
+    .pub .venue { font-size: 15px; margin-top: 4px; }
+    .pub .authors { font-size: 15px; margin-top: 4px; }
+    .pub .authors u { text-decoration: underline; text-underline-offset: 2px; }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 32px 20px 56px; }
+      header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
+      nav { gap: 16px; }
+      .row { flex-direction: column; gap: 2px; }
+    }
   </style>
 </head>
 <body>
+<div class="wrap">
 
-<nav>
-  <div class="nav-left">
-    <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
-    <button class="theme-btn" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
-  </div>
-  <div class="nav-right">
-    <button class="nav-btn" onclick="showPage('achievements', this)">Achievements</button>
-    <button class="nav-btn" onclick="showPage('research', this)">Research</button>
-    <button class="nav-btn" onclick="showPage('publications', this)">Publications</button>
-    <button class="nav-btn" onclick="showPage('projects', this)">Projects</button>
-    <button class="nav-btn" onclick="showPage('athletics', this)">Athletics</button>
-  </div>
-</nav>
+  <header>
+    <a class="name" href="#about">Brad Cao</a>
+    <nav>
+      <a href="#about" data-page="about">About</a>
+      <a href="#experience" data-page="experience">Experience</a>
+      <a href="#publications" data-page="publications">Publications</a>
+    </nav>
+  </header>
 
-<main>
+  <main>
 
-  <div id="home" class="page active">
-    <div class="home-card">
-      <h1>Brad Cao</h1>
-      <p>I am interested in machine learning, artificial intelligence, and quantitative finance.</p>
-      <p>You can also check out my resume <a href="resume.pdf">here</a>.</p>
-      <p>Excited to meet smart people! Reach <a href="https://mail.google.com/mail/?view=cm&to=bcao4049@gmail.com" target="_blank">here</a> about anything, a project, book recommendation or just want to chat.</p>
-      <div class="photo-wrap">
-        <img src="profile.jpg" alt="Brad Cao">
+    <section id="page-about" class="page about">
+      <img class="photo" src="profile.jpg" alt="Brad Cao">
+      <p>I'm an undergrad at Columbia studying mathematics and computer science. I'm a research fellow under the <a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">Supervised Program for Alignment Research</a>, and previously worked at Mercor, Duke University, and the University of Maryland, Baltimore.</p>
+      <p>I'm always excited to meet ambitious and smart people.</p>
+      <div class="icons">
+        <a href="mailto:bcao4049@gmail.com" title="Email" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+        <a href="https://github.com/bradca0" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/brad_ca00" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="resume.pdf" target="_blank" rel="noopener" title="Resume" aria-label="Resume">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+        </a>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="achievements" class="page">
-    <div class="section-card">
-      <h2>Achievements</h2>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Top Poster Award</div>
-          <div class="entry-date">2025</div>
-        </div>
-        <div class="entry-subtitle">American Society for Clinical Pharmacology & Therapeutics — National Conference</div>
-        <div class="entry-body">Awarded top poster recognition at one of the nation's premier clinical pharmacology conferences, for research on predictive modeling of serious adverse drug outcomes in stimulant-treated patients.</div>
+    <section id="page-experience" class="page">
+      <h2>Education</h2>
+      <div class="item">
+        <div class="row"><span class="title">Columbia University</span><span class="date">Expected May 2029</span></div>
+        <div class="sub">B.A. in Mathematics &amp; Computer Science · New York, NY</div>
+        <div class="body">Relevant coursework: Data Structures in Java, Probability Theory, Natural Language Processing, Honors Mathematics A &amp; B.</div>
       </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">National Champion — Data Analysis</div>
-          <div class="entry-date">2024</div>
-        </div>
-        <div class="entry-subtitle">FBLA National Leadership Conference</div>
-        <div class="entry-body">Placed 1st nationally in the Data Analysis event at the Future Business Leaders of America National Leadership Conference, competing against thousands of students across the country.</div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Congressional Citation Awardee</div>
-          <div class="entry-date">2025</div>
-        </div>
-        <div class="entry-body">Received a formal citation from the U.S. Congress in recognition of outstanding community contributions and achievements.</div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">1st Team USA Fencing All-American</div>
-          <div class="entry-date">2025</div>
-        </div>
-        <div class="entry-body">Named to the USA Fencing 1st Team All-American squad in Men's Epee, one of the highest individual honors in U.S. competitive fencing.</div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">USACO Silver Division</div>
-          <div class="entry-date">2025</div>
-        </div>
-        <div class="entry-subtitle">USA Computing Olympiad</div>
-        <div class="entry-body">Achieved Silver division standing in the USA Computing Olympiad, a highly selective national algorithmic programming competition.</div>
-      </div>
-    </div>
-  </div>
 
-  <div id="research" class="page">
-    <div class="section-card">
-      <h2>Research</h2>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Research Fellow</div>
-          <div class="entry-date">2026 – Present</div>
-        </div>
-        <div class="entry-subtitle">SPAR (Supervised Program for Alignment Research) — <a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank">Datasets for Human+AI Safety-Judges</a></div>
-        <div class="entry-body">Building datasets that evaluate human+AI judge systems for scalable oversight, mentored by Rishub Jain and Joshua Jacob, both formerly of Google DeepMind. Rishub spent seven years there &mdash; research engineer on AlphaFold 2 and 3, then co-lead of the Rater Assist team on scalable oversight, then Information Quality and Gemini Security. Joshua was co-lead for Human Data Engineering, building the post-training and evaluation data behind Gemini's safety, computer-use, and coding capabilities. Judges — human annotators, language models, or the two combined — sit inside RLHF and RLAIF training, evaluations, and data filtering, yet there is little work on combining them into one accurate, robust system. The project is assembling a leaderboard of 100+ datasets across a safety taxonomy (deception, jailbreak robustness, cultural bias, computer-control mistakes), measuring both static accuracy and robustness to reward hacking under adversarial optimization.<br><br>Evaluating existing judge datasets for onboarding and creating new ones where the taxonomy has gaps, with sandwiching to establish ground truth. Output is a paper or blog post with the rest of the team.</div>
+      <h2>Experience</h2>
+      <div class="item">
+        <div class="row"><span class="title">Research Fellow</span><span class="date">Sep 2026 – Present</span></div>
+        <div class="sub"><a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">SPAR (Supervised Program for Alignment Research)</a> · Remote</div>
+        <div class="body"><ul>
+          <li>Building datasets that evaluate human+AI judge systems for scalable oversight with Rishub Jain and Joshua Jacob (ex-Google DeepMind): a 100+ dataset leaderboard spanning deception, jailbreak robustness, cultural bias, and computer-control mistakes.</li>
+          <li>Evaluating existing judge datasets for onboarding and creating new ones for taxonomy gaps, with sandwiching for ground truth; measuring judge robustness to reward hacking under adversarial RL optimization.</li>
+        </ul></div>
       </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Research Intern</div>
-          <div class="entry-date">2023 – 2025</div>
-        </div>
-        <div class="entry-subtitle">University of Maryland, Baltimore — Department of Pharmacy Practice & Science</div>
-        <div class="entry-body">Conducted clinical pharmacology research under faculty mentorship, working with over a decade of FDA adverse event reporting data. The project focused on identifying ADHD patients at elevated risk of serious adverse outcomes from stimulant treatments using real-world evidence. Led the full data pipeline design, feature engineering from raw FDA submissions, and the development and optimization of a random forest classification model. Findings were presented as an award-winning poster at the 2025 ASCPT National Conference.</div>
+      <div class="item">
+        <div class="row"><span class="title">Data Science Intern</span><span class="date">Apr 2026 – Sep 2026</span></div>
+        <div class="sub">Mercor · San Francisco, CA</div>
+        <div class="body"><ul>
+          <li>Engineered evaluation frameworks that formalize subject-matter expertise into RLHF-compatible annotation schemas for LLM fine-tuning pipelines.</li>
+          <li>Designed rubric-based scoring taxonomies and QA workflows to raise inter-annotator agreement; audited quality and flagged edge cases to refine labeling guidelines.</li>
+        </ul></div>
       </div>
-    </div>
-  </div>
+      <div class="item">
+        <div class="row"><span class="title">Research Assistant</span><span class="date">Apr 2026 – Sep 2026</span></div>
+        <div class="sub">Duke University · Durham, NC</div>
+        <div class="body"><ul>
+          <li>Trained and developed LLMs to identify and quantify inter-network disparagement in televised news media, building NLP pipelines to ingest, segment, and label large transcript volumes.</li>
+          <li>Benchmarked prompt-engineered and fine-tuned classifiers against human-coded samples with Dr. Philip Napoli, translating media-studies frameworks into quantifiable schemas.</li>
+        </ul></div>
+      </div>
+      <div class="item">
+        <div class="row"><span class="title">Research Intern</span><span class="date">Jun 2025 – Aug 2025</span></div>
+        <div class="sub">University of Notre Dame · South Bend, IN</div>
+        <div class="body"><ul>
+          <li>Awarded a full-ride scholarship for original quantitative research on the pharmaceutical industry's impact on public health policy.</li>
+          <li>Applied R-based regression and visualization to link industry practices to poverty outcomes; presented at a symposium.</li>
+        </ul></div>
+      </div>
+      <div class="item">
+        <div class="row"><span class="title">Research Intern</span><span class="date">Jun 2023 – Sep 2025</span></div>
+        <div class="sub">University of Maryland, Baltimore · Baltimore, MD</div>
+        <div class="body"><ul>
+          <li>First-authored a supervised ML model with Prof. Allison Dunn predicting ADHD-related patient safety risks from real-world data.</li>
+          <li>First-authored a study modeling tacrolimus dose requirements and transplant outcomes in lung transplant recipients on systemic azole antifungals.</li>
+          <li>Presented at the ASCPT Annual Meetings (2024, 2025); earned the Top Poster Award (May 2025).</li>
+        </ul></div>
+      </div>
 
-  <div id="publications" class="page">
-    <div class="section-card">
-      <h2>Publications</h2>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data</div>
-          <div class="entry-date">2025</div>
-        </div>
-        <div class="entry-subtitle">ASCPT Annual Meeting · Washington, DC · May 28–31, 2025</div>
-        <div class="entry-body"><strong>Cao, B.</strong>, Lee S., Naga A., Gobburu J., Dunn A.</div>
+      <h2>Skills</h2>
+      <div class="item">
+        <div class="body"><ul>
+          <li><strong>Languages:</strong> Python, JavaScript, Java, SQL (PostgreSQL), R, HTML/CSS</li>
+          <li><strong>Frameworks &amp; Tools:</strong> PyTorch, TransformerLens, NumPy, pandas, scikit-learn, Django, TailwindCSS, Nginx, Gunicorn, Ubuntu/Linux</li>
+          <li><strong>ML &amp; Data:</strong> Mechanistic interpretability, LLM fine-tuning, RLHF annotation, supervised ML, data analysis</li>
+        </ul></div>
       </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">Predictive Modeling of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals</div>
-          <div class="entry-date">2024</div>
-        </div>
-        <div class="entry-subtitle">ASCPT Annual Meeting · Colorado Springs, CO · March 27–29, 2024</div>
-        <div class="entry-body"><strong>Cao, B.</strong>, Gupta P., Dunn A.</div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="projects" class="page">
-    <div class="section-card">
-      <h2>Projects</h2>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">orderbook-sim</div>
-        </div>
-        <div class="entry-subtitle"><a href="https://github.com/bradca0/orderbook-sim" target="_blank">github.com/bradca0/orderbook-sim</a></div>
-        <div class="entry-body">An event-driven limit order book simulator with exact price-time priority, built to test how much of a backtested edge survives realistic queue position. Most backtests fill your order the moment a trade prints at your price; real exchanges make you wait.<br><br>A strategy worth +214 ticks per episode under the standard fill assumption is worth +2.8 once the queue is modelled — 98.7% of the edge was the assumption rather than the strategy. The synthetic market is validated against published stylized facts (9 of 11 inside empirical bands), and every reported result carries paired bootstrap confidence intervals, Holm–Bonferroni correction, and a deflated Sharpe charged for all 24 configurations tried during development.</div>
+    <section id="page-publications" class="page">
+      <div class="pub">
+        <div class="ptitle">Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data</div>
+        <div class="venue">ASCPT Annual Meeting, 2025 · Washington, DC · Top Poster Award</div>
+        <div class="authors"><u>Cao, B.</u>, Lee, S., Naga, A., Gobburu, J., Dunn, A.</div>
       </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">polymarket-pnl</div>
-        </div>
-        <div class="entry-subtitle"><a href="https://github.com/bradca0/polymarket-pnl" target="_blank">github.com/bradca0/polymarket-pnl</a></div>
-        <div class="entry-body">Reconstructs per-wallet profit and loss from Polymarket on-chain activity and validates it against the exchange's own numbers: 92% of positions match exactly and 43 of 51 wallets reconcile perfectly.<br><br>It then asks whether apparent trader skill is real or variance. Population raw edge of +0.126 collapses to −0.095 once shrunk toward the mean, so most of the visible edge is luck. Backtested point-in-time, the skill-weighted signal does not beat the market price — Brier 0.2088 against the market's 0.2046, ROI −3.3% after costs. Reported as-is.</div>
+      <div class="pub">
+        <div class="ptitle">Predictive Modeling of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals</div>
+        <div class="venue">ASCPT Annual Meeting, 2024 · Colorado Springs, CO</div>
+        <div class="authors"><u>Cao, B.</u>, Gupta, P., Dunn, A.</div>
       </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">threshold</div>
-        </div>
-        <div class="entry-subtitle"><a href="https://github.com/bradca0/threshold" target="_blank">github.com/bradca0/threshold</a></div>
-        <div class="entry-body">An empirical study of double descent: the observation that past a certain size, bigger models stop overfitting and start improving again. Sweeping a random-feature model through the interpolation threshold on MNIST, test error peaks at exactly p = n — 88.8% there against 24.4% at five times the size.<br><br>The mechanism is measured four independent ways from a single matrix decomposition per model: the fitted weights grow 313×, the feature matrix's smallest singular value collapses, a bias–variance decomposition puts 90.0% of the peak on variance, and a ridge penalty tuned per model size removes the peak entirely. Ensembling, which should reduce variance, fails at the threshold — the members' output scales differ by 10.5× there — and the repository reports that with its cause rather than omitting it.</div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">induction-heads</div>
-        </div>
-        <div class="entry-subtitle"><a href="https://github.com/bradca0/induction-heads" target="_blank">github.com/bradca0/induction-heads</a></div>
-        <div class="entry-body">A mechanistic-interpretability study of how language models learn from their own context. An induction head is an attention head that looks back for the last time it saw the current token and predicts whatever followed it. This scores all 144 attention heads in GPT-2 Small, locates them, and switches them off.<br><br>With the top four ablated, loss on a repeated random sequence rises from 0.23 to 7.83 nats, while ablating four matched control heads from the same layers leaves it at 0.27 — a separation of 86 standard errors. On aggregate in-context learning over natural prose the same intervention is much weaker and not statistically decisive, which the write-up states plainly rather than leading with the more flattering measurement.</div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">MyCureHope</div>
-        </div>
-        <div class="entry-subtitle"><a href="https://www.mycurehope.org/" target="_blank">mycurehope.org</a></div>
-        <div class="entry-body">MyCureHope is an open-source disease treatment database built to make medical information more accessible to patients and families worldwide. Rather than requiring users to know their exact diagnosis, the platform allows people to search for potential treatments based on symptoms — a more intuitive approach to navigating complex healthcare information.<br><br>The platform now serves 33,000 users across 78 countries. It integrates data aggregation algorithms that compile and organize treatment data from multiple trusted sources, helping individuals identify relevant options and better understand the pathways of care available to them.</div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="athletics" class="page">
-    <div class="section-card">
-      <h2>Athletics</h2>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">USA Fencing — Men's Epee</div>
-        </div>
-        <div class="entry-subtitle">1st Team All-American</div>
-        <div class="entry-body">Competing nationally in Men's Epee on the North American Cup (NAC) circuit. Ranked Top 30 among cadets nationally (2024 season) and Top 50 among juniors (2025 season).</div>
-      </div>
-      <div class="section-label" style="margin-top: 8px;">Notable Results</div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">27th Place — November NAC</div>
-          <div class="entry-date">2024</div>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">28th Place — April NAC</div>
-          <div class="entry-date">2024</div>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">24th Place — National Championships</div>
-          <div class="entry-date">2023</div>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">32nd Place — October NAC</div>
-          <div class="entry-date">2023</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<footer>
-  <a href="https://www.instagram.com/brad_ca00" target="_blank">Instagram</a> •
-  <a href="https://mail.google.com/mail/?view=cm&to=bcao4049@gmail.com" target="_blank">Email</a> •
-  <a href="resume.pdf">Resume</a> •
-  <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank">LinkedIn</a>
-</footer>
+  </main>
+</div>
 
 <script>
-  function showPage(id, btn) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-  }
-
-  function toggleTheme() {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? '' : 'dark');
-    document.querySelector('.theme-btn').textContent = isDark ? '🌙' : '☀️';
-  }
+  (function () {
+    var pages = ['about', 'experience', 'publications'];
+    function show() {
+      var id = location.hash.replace('#', '');
+      if (pages.indexOf(id) === -1) id = 'about';
+      pages.forEach(function (p) {
+        document.getElementById('page-' + p).classList.toggle('active', p === id);
+      });
+      document.querySelectorAll('nav a').forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('data-page') === id);
+      });
+      document.title = id === 'about' ? 'Brad Cao' : id.charAt(0).toUpperCase() + id.slice(1) + ' | Brad Cao';
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener('hashchange', show);
+    show();
+  })();
 </script>
-
 </body>
 </html>
