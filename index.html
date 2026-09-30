@@ -126,9 +126,10 @@
     <section id="page-experience" class="page">
       <h2>Education</h2>
       <div class="item">
-        <div class="row"><span class="title">Columbia University</span><span class="date">Expected May 2029</span></div>
+        <div class="row"><span class="title">Columbia University</span><span class="date">Expected May 2030</span></div>
         <div class="sub">B.A. in Mathematics &amp; Computer Science · New York, NY</div>
         <div class="body">Relevant coursework: Data Structures in Java, Probability Theory, Natural Language Processing, Honors Mathematics A &amp; B.</div>
+        <div class="body">Activities: Columbia Alpha Partners (Global Markets Division), Columbia Artificial Intelligence Alignment Technical Fellowship, Columbia Poker Club.</div>
       </div>
 
       <h2>Experience</h2>
@@ -136,50 +137,54 @@
         <div class="row"><span class="title">Research Fellow</span><span class="date">Sep 2026 – Present</span></div>
         <div class="sub"><a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">SPAR (Supervised Program for Alignment Research)</a> · Remote</div>
         <div class="body"><ul>
-          <li>Building datasets that evaluate human+AI judge systems for scalable oversight with Rishub Jain and Joshua Jacob (ex-Google DeepMind): a 100+ dataset leaderboard spanning deception, jailbreak robustness, cultural bias, and computer-control mistakes.</li>
-          <li>Evaluating existing judge datasets for onboarding and creating new ones for taxonomy gaps, with sandwiching for ground truth; measuring judge robustness to reward hacking under adversarial RL optimization.</li>
+          <li>Build evaluation datasets that test whether humans working with AI “judges” can reliably oversee other AI systems, as part of a 100+ dataset leaderboard covering deception, jailbreak robustness, cultural bias, and computer-control mistakes.</li>
+          <li>Audit existing judge datasets for coverage gaps and create new ones to fill them, using sandwiching for ground truth.</li>
+          <li>Measure how easily judges are fooled by reward hacking under adversarial RL optimization.</li>
         </ul></div>
       </div>
       <div class="item">
         <div class="row"><span class="title">Data Science Intern</span><span class="date">Apr 2026 – Sep 2026</span></div>
         <div class="sub">Mercor · San Francisco, CA</div>
         <div class="body"><ul>
-          <li>Engineered evaluation frameworks that formalize subject-matter expertise into RLHF-compatible annotation schemas for LLM fine-tuning pipelines.</li>
-          <li>Designed rubric-based scoring taxonomies and QA workflows to raise inter-annotator agreement; audited quality and flagged edge cases to refine labeling guidelines.</li>
+          <li>Developed 10+ rubric-based scoring taxonomies that turn expert judgment on professional tasks into consistent criteria for evaluating and training LLMs (RLHF annotation schemas).</li>
+          <li>Drafted pass/fail criteria with acceptable and unacceptable example responses so expert reviewers score consistently.</li>
+          <li>Flagged edge cases (ambiguous, incomplete, or conflicting inputs) that ordinary prompts miss and added them to the rubrics.</li>
+          <li>Audited labeled data for reviewer disagreements and suggested guideline updates to raise inter-annotator agreement.</li>
         </ul></div>
       </div>
       <div class="item">
         <div class="row"><span class="title">Research Assistant</span><span class="date">Apr 2026 – Sep 2026</span></div>
         <div class="sub">Duke University · Durham, NC</div>
         <div class="body"><ul>
-          <li>Trained and developed LLMs to identify and quantify inter-network disparagement in televised news media, building NLP pipelines to ingest, segment, and label large transcript volumes.</li>
-          <li>Benchmarked prompt-engineered and fine-tuned classifiers against human-coded samples with Dr. Philip Napoli, translating media-studies frameworks into quantifiable schemas.</li>
+          <li>Designed and built an LLM pipeline (GPT-5.5, OpenAI Batch API) that analyzed 18.7M words across 3,543 cable news transcripts (CNN, Fox, MSNBC; 2011–2025), one batch job per transcript.</li>
+          <li>Refined a 20-page coding protocol over 18 versions to reach ~99.4% accuracy on flagged cases with no missed cases; cleaned the data.</li>
+          <li>Built an auditable review workflow: 12,892 flagged candidates, 1,584 ambiguous (12.3%) sent to human review; found Fox disparages media at 10× CNN’s rate, 4× MSNBC’s.</li>
         </ul></div>
       </div>
       <div class="item">
-        <div class="row"><span class="title">Research Intern</span><span class="date">Jun 2025 – Aug 2025</span></div>
+        <div class="row"><span class="title">Leadership Seminar Scholar</span><span class="date">Jun 2025 – Aug 2025</span></div>
         <div class="sub">University of Notre Dame · South Bend, IN</div>
         <div class="body"><ul>
-          <li>Awarded a full-ride scholarship for original quantitative research on the pharmaceutical industry's impact on public health policy.</li>
-          <li>Applied R-based regression and visualization to link industry practices to poverty outcomes; presented at a symposium.</li>
+          <li>Won a full-ride scholarship to Notre Dame’s “Inequality in America” seminar; conducted original meta-research on how the pharmaceutical industry shapes health policy, reviewing 15+ studies.</li>
+          <li>Ran regression analysis and visualizations in R linking industry practices to poverty outcomes, connecting to the seminar’s focus on economic inequality; presented at a symposium.</li>
         </ul></div>
       </div>
       <div class="item">
         <div class="row"><span class="title">Research Intern</span><span class="date">Jun 2023 – Sep 2025</span></div>
         <div class="sub">University of Maryland, Baltimore · Baltimore, MD</div>
         <div class="body"><ul>
-          <li>First-authored a supervised ML model with Prof. Allison Dunn predicting ADHD-related patient safety risks from real-world data.</li>
-          <li>First-authored a study modeling tacrolimus dose requirements and transplant outcomes in lung transplant recipients on systemic azole antifungals.</li>
-          <li>Presented at the ASCPT Annual Meetings (2024, 2025); earned the Top Poster Award (May 2025).</li>
+          <li>First-authored 2 studies, presented at the ASCPT Annual Meetings (2024, 2025); the 2025 poster won the Top Poster Award.</li>
+          <li>Built ML models (logistic regression, random forests) on 10 years of FDA adverse-event reports to predict serious outcomes in ADHD patients on stimulants; tuned with cross-validation; best model reached 0.75 AUC and 88% recall.</li>
+          <li>Modeled tacrolimus dose requirements and transplant outcomes in lung transplant recipients taking azole antifungals.</li>
         </ul></div>
       </div>
 
-      <h2>Skills</h2>
+      <h2>Skills &amp; Interests</h2>
       <div class="item">
         <div class="body"><ul>
           <li><strong>Languages:</strong> Python, JavaScript, Java, SQL (PostgreSQL), R, HTML/CSS</li>
-          <li><strong>Frameworks &amp; Tools:</strong> PyTorch, TransformerLens, NumPy, pandas, scikit-learn, Django, TailwindCSS, Nginx, Gunicorn, Ubuntu/Linux</li>
-          <li><strong>ML &amp; Data:</strong> Mechanistic interpretability, LLM fine-tuning, RLHF annotation, supervised ML, data analysis</li>
+          <li><strong>Tools &amp; ML:</strong> PyTorch, TransformerLens, NumPy, pandas, scikit-learn, Django, Linux; mech interp, LLM fine-tuning, RLHF</li>
+          <li><strong>Interests:</strong> Fencing (USA Fencing First Team All-American), Competitive Programming (USACO), History Olympiads, Open-Source</li>
         </ul></div>
       </div>
     </section>
