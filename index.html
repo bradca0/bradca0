@@ -5,224 +5,388 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brad Cao</title>
   <meta name="description" content="Brad Cao — undergraduate at Columbia University studying mathematics and computer science.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
   <style>
     :root {
       --bg: #ffffff;
-      --text: #000000;
-      --muted: #6b6b6b;
-      --faint: #9a9a9a;
-      --rule: #e6e6e6;
-      --link: #2b5fb3;
+      --bg-alt: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --faint: #86868b;
+      --rule: #d2d2d7;
+      --link: #0066cc;
+      --nav: rgba(255, 255, 255, 0.72);
+      --btn: #1d1d1f;
+      --btn-text: #ffffff;
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --bg-alt: #101012;
+        --card: #1c1c1e;
+        --text: #f5f5f7;
+        --muted: #a1a1a6;
+        --faint: #86868b;
+        --rule: #38383a;
+        --link: #2997ff;
+        --nav: rgba(22, 22, 23, 0.72);
+        --btn: #f5f5f7;
+        --btn-text: #1d1d1f;
+      }
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 64px; }
     body {
-      font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 17px;
+      line-height: 1.47;
+      letter-spacing: -0.022em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .wrap { max-width: 620px; margin: 0 auto; padding: 44px 24px 72px; }
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--nav);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent);
+    }
+    .nav-inner {
+      max-width: 980px; margin: 0 auto; padding: 0 22px; height: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav .name { color: var(--text); font-weight: 600; font-size: 17px; letter-spacing: -0.02em; }
+    .nav .links { display: flex; gap: 28px; }
+    .nav .links a { color: var(--text); opacity: 0.8; font-size: 12px; letter-spacing: -0.01em; transition: opacity .2s; }
+    .nav a:hover { opacity: 1; text-decoration: none; }
 
-    header { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 36px; }
-    .name { font-weight: 600; font-size: 17px; color: var(--text); letter-spacing: -0.01em; }
-    .name:hover { text-decoration: none; }
-    nav { display: flex; gap: 18px; }
-    nav a { color: var(--muted); font-weight: 500; font-size: 15px; }
-    nav a:hover { color: var(--text); text-decoration: none; }
-    nav a.active { color: var(--text); font-weight: 600; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 22px; }
 
-    .page { display: none; }
-    .page.active { display: block; }
+    /* Hero */
+    .hero { text-align: center; padding: 104px 0 112px; }
+    .photo { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 32px; }
+    .hero h1 { font-size: clamp(48px, 9vw, 80px); line-height: 1.05; font-weight: 700; letter-spacing: -0.015em; }
+    .hero .lede {
+      font-size: clamp(21px, 3vw, 28px); line-height: 1.25; font-weight: 500; color: var(--muted);
+      max-width: 680px; margin: 18px auto 0; letter-spacing: 0.004em;
+    }
+    .hero .lede a { color: var(--muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .hero .lede a:hover { color: var(--text); }
+    .ctas { display: flex; justify-content: center; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-width: 120px;
+      padding: 11px 22px; border-radius: 980px; font-size: 17px; font-weight: 400;
+      background: var(--btn); color: var(--btn-text); transition: opacity .2s;
+    }
+    .btn.ghost { background: transparent; color: var(--link); box-shadow: inset 0 0 0 1px var(--link); }
+    .btn:hover { opacity: 0.85; text-decoration: none; }
 
-    /* About */
-    .photo { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: 24px; }
-    .about p { margin-bottom: 18px; }
-    .about p:last-of-type { margin-bottom: 0; }
+    /* Sections */
+    section.block { padding: 96px 0; }
+    section.alt { background: var(--bg-alt); }
+    .eyebrow { font-size: 17px; font-weight: 600; color: var(--faint); margin-bottom: 6px; }
+    h2 { font-size: clamp(36px, 6vw, 56px); line-height: 1.07; font-weight: 700; letter-spacing: -0.005em; margin-bottom: 48px; }
 
-    .icons { display: flex; gap: 16px; margin-top: 28px; }
-    .icons a { color: var(--text); display: inline-flex; width: 20px; height: 20px; }
-    .icons a:hover { color: var(--muted); text-decoration: none; }
-    .icons svg { width: 20px; height: 20px; }
+    /* Timeline rows */
+    .item { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--rule); }
+    .item:last-child { border-bottom: 1px solid var(--rule); }
+    .when { font-size: 14px; color: var(--faint); padding-top: 4px; }
+    .what h3 { font-size: 21px; font-weight: 600; line-height: 1.24; letter-spacing: 0.01em; }
+    .what .org { font-size: 17px; color: var(--muted); margin-top: 2px; }
+    .what .org a { color: var(--muted); }
+    .what ul { list-style: none; margin-top: 14px; }
+    .what li { position: relative; padding-left: 18px; color: var(--text); font-size: 17px; margin-bottom: 8px; }
+    .what li::before { content: ""; position: absolute; left: 2px; top: 0.66em; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
+    .what li:last-child { margin-bottom: 0; }
+    .what p { color: var(--muted); margin-top: 10px; }
 
-    /* Lists */
-    h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin: 32px 0 14px; }
-    h2:first-child { margin-top: 0; }
-    .item { padding: 14px 0; border-bottom: 1px solid var(--rule); }
-    .item:last-child { border-bottom: none; }
-    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-    .title { font-weight: 600; font-size: 16px; color: var(--text); }
-    .title a { color: var(--link); }
-    .date { color: var(--faint); font-size: 14px; white-space: nowrap; }
-    .sub { color: var(--muted); font-size: 15px; margin-top: 2px; }
-    .body { font-size: 15px; color: var(--text); margin-top: 8px; }
-    .body ul { padding-left: 18px; }
-    .body li { margin-bottom: 4px; }
-    .body li:last-child { margin-bottom: 0; }
-    .body p + p { margin-top: 8px; }
+    /* Cards */
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card {
+      background: var(--card); border-radius: 18px; padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform .3s cubic-bezier(.25,.1,.25,1), box-shadow .3s;
+    }
+    section:not(.alt) .card { background: var(--bg-alt); }
+    a.card { color: inherit; }
+    a.card:hover { text-decoration: none; transform: scale(1.012); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .card .tag { font-size: 12px; font-weight: 600; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; }
+    .card h3 { font-size: 24px; font-weight: 600; line-height: 1.17; letter-spacing: 0.009em; }
+    .card p { color: var(--muted); font-size: 17px; }
+    .card .more { color: var(--link); font-size: 17px; margin-top: auto; padding-top: 10px; }
+    .card .authors u { text-underline-offset: 3px; }
 
-    /* Publications */
-    .pub { padding: 14px 0; border-bottom: 1px solid var(--rule); }
-    .pub:last-child { border-bottom: none; }
-    .pub .ptitle { color: var(--link); font-weight: 500; font-size: 16px; }
-    .pub .venue { font-size: 15px; margin-top: 4px; }
-    .pub .authors { font-size: 15px; margin-top: 4px; }
-    .pub .authors u { text-decoration: underline; text-underline-offset: 2px; }
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .skills h3 { font-size: 21px; }
 
-    @media (max-width: 480px) {
-      .wrap { padding: 32px 20px 56px; }
-      header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
-      nav { gap: 16px; }
-      .row { flex-direction: column; gap: 2px; }
+
+    /* Contact */
+    .contact-lede { font-size: 21px; color: var(--muted); margin: -28px 0 40px; }
+    .contact-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 16px; padding: 24px 28px; border-radius: 18px;
+      background: var(--card); color: var(--text); font-size: 19px;
+      transition: transform .3s cubic-bezier(.25,.1,.25,1), box-shadow .3s;
+    }
+    .contact-link:hover { text-decoration: none; transform: scale(1.012); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .contact-link .ic { display: inline-flex; color: var(--faint); }
+    .contact-link .ic svg { width: 22px; height: 22px; }
+    .contact-link .label { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+    .contact-link .more { color: var(--link); font-size: 24px; line-height: 1; }
+
+    footer { padding: 40px 0 56px; font-size: 12px; color: var(--faint); border-top: 1px solid var(--rule); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: var(--muted); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.25,.1,.25,1), transform .9s cubic-bezier(.25,.1,.25,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    @media (max-width: 734px) {
+      .nav .links { gap: 18px; }
+      .nav .links a.hide-sm { display: none; }
+      .hero { padding: 72px 0 80px; }
+      section.block { padding: 72px 0; }
+      h2 { margin-bottom: 32px; }
+      .item { grid-template-columns: 1fr; gap: 6px; padding: 26px 0; }
+      .grid, .skills, .contact-list { grid-template-columns: 1fr; }
+      .contact-lede { margin-top: -16px; }
+      .card { padding: 28px 24px; }
     }
   </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <a class="name" href="#about">Brad Cao</a>
-    <nav>
-      <a href="#about" data-page="about">About</a>
-      <a href="#experience" data-page="experience">Experience</a>
-      <a href="#publications" data-page="publications">Publications</a>
-    </nav>
-  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="name" href="#top">Brad Cao</a>
+      <div class="links">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications" class="hide-sm">Publications</a>
+        <a href="#contact" class="hide-sm">Contact</a>
+        <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </nav>
 
-  <main>
+  <main id="top">
+    <header class="hero wrap">
+      <img class="photo reveal" src="profile.jpg" alt="Brad Cao">
+      <h1 class="reveal">Brad Cao.</h1>
+      <p class="lede reveal">Mathematics and computer science at Columbia. Research fellow at <a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">SPAR</a>, working on scalable oversight of AI systems.</p>
+      <div class="ctas reveal">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View resume</a>
+        <a class="btn ghost" href="mailto:bcao4049@gmail.com">Get in touch</a>
+      </div>
+    </header>
 
-    <section id="page-about" class="page about">
-      <img class="photo" src="profile.jpg" alt="Brad Cao">
-      <p>I'm an undergrad at Columbia studying mathematics and computer science. I'm a research fellow under the <a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">Supervised Program for Alignment Research</a>, and previously worked at Mercor, Duke University, and the University of Maryland, Baltimore.</p>
-      <p>I'm always excited to meet ambitious and smart people.</p>
-      <div class="icons">
-        <a href="mailto:bcao4049@gmail.com" title="Email" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-        </a>
-        <a href="https://github.com/bradca0" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/brad_ca00" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="resume.pdf" target="_blank" rel="noopener" title="Resume" aria-label="Resume">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
-        </a>
+    <section id="experience" class="block alt">
+      <div class="wrap">
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="reveal">Research, data, and evaluation.</h2>
+
+        <div class="item reveal">
+          <div class="when">Sep 2026 – Present</div>
+          <div class="what">
+            <h3>Research Fellow</h3>
+            <div class="org"><a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">SPAR (Supervised Program for Alignment Research)</a> · Remote</div>
+            <ul>
+              <li>Build evaluation datasets that test whether humans working with AI “judges” can reliably oversee other AI systems, as part of a 100+ dataset leaderboard covering deception, jailbreak robustness, cultural bias, and computer-control mistakes.</li>
+              <li>Audit existing judge datasets for coverage gaps and create new ones to fill them, using sandwiching for ground truth.</li>
+              <li>Measure how easily judges are fooled by reward hacking under adversarial RL optimization.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item reveal">
+          <div class="when">Apr 2026 – Sep 2026</div>
+          <div class="what">
+            <h3>Data Science Intern</h3>
+            <div class="org">Mercor · San Francisco, CA</div>
+            <ul>
+              <li>Developed 10+ rubric-based scoring taxonomies that turn expert judgment on professional tasks into consistent criteria for evaluating and training LLMs (RLHF annotation schemas).</li>
+              <li>Drafted pass/fail criteria with acceptable and unacceptable example responses so expert reviewers score consistently.</li>
+              <li>Flagged edge cases (ambiguous, incomplete, or conflicting inputs) that ordinary prompts miss and added them to the rubrics.</li>
+              <li>Audited labeled data for reviewer disagreements and suggested guideline updates to raise inter-annotator agreement.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item reveal">
+          <div class="when">Apr 2026 – Sep 2026</div>
+          <div class="what">
+            <h3>Research Assistant</h3>
+            <div class="org">Duke University · Durham, NC</div>
+            <ul>
+              <li>Designed and built an LLM pipeline (GPT-5.5, OpenAI Batch API) that analyzed 18.7M words across 3,543 cable news transcripts (CNN, Fox, MSNBC; 2011–2025), one batch job per transcript.</li>
+              <li>Refined a 20-page coding protocol over 18 versions to reach ~99.4% accuracy on flagged cases with no missed cases; cleaned the data.</li>
+              <li>Built an auditable review workflow: 12,892 flagged candidates, 1,584 ambiguous (12.3%) sent to human review; found Fox disparages media at 10× CNN’s rate, 4× MSNBC’s.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item reveal">
+          <div class="when">Jun 2025 – Aug 2025</div>
+          <div class="what">
+            <h3>Leadership Seminar Scholar</h3>
+            <div class="org">University of Notre Dame · South Bend, IN</div>
+            <ul>
+              <li>Won a full-ride scholarship to Notre Dame’s “Inequality in America” seminar; conducted original meta-research on how the pharmaceutical industry shapes health policy, reviewing 15+ studies.</li>
+              <li>Ran regression analysis and visualizations in R linking industry practices to poverty outcomes, connecting to the seminar’s focus on economic inequality; presented at a symposium.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item reveal">
+          <div class="when">Jun 2023 – Sep 2025</div>
+          <div class="what">
+            <h3>Research Intern</h3>
+            <div class="org">University of Maryland, Baltimore · Baltimore, MD</div>
+            <ul>
+              <li>First-authored 2 studies, presented at the ASCPT Annual Meetings (2024, 2025); the 2025 poster won the Top Poster Award.</li>
+              <li>Built ML models (logistic regression, random forests) on 10 years of FDA adverse-event reports to predict serious outcomes in ADHD patients on stimulants; tuned with cross-validation; best model reached 0.75 AUC and 88% recall.</li>
+              <li>Modeled tacrolimus dose requirements and transplant outcomes in lung transplant recipients taking azole antifungals.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item reveal">
+          <div class="when">Expected May 2029</div>
+          <div class="what">
+            <h3>Columbia University</h3>
+            <div class="org">B.A. in Mathematics &amp; Computer Science · New York, NY</div>
+            <p>Coursework: Data Structures in Java, Probability Theory, Natural Language Processing, Honors Mathematics A &amp; B.</p>
+            <p>Activities: Columbia Alpha Partners (Global Markets Division), Columbia Artificial Intelligence Alignment Technical Fellowship, Columbia Poker Club.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="page-experience" class="page">
-      <h2>Education</h2>
-      <div class="item">
-        <div class="row"><span class="title">Columbia University</span><span class="date">Expected May 2029</span></div>
-        <div class="sub">B.A. in Mathematics &amp; Computer Science · New York, NY</div>
-        <div class="body">Relevant coursework: Data Structures in Java, Probability Theory, Natural Language Processing, Honors Mathematics A &amp; B.</div>
-        <div class="body">Activities: Columbia Alpha Partners (Global Markets Division), Columbia Artificial Intelligence Alignment Technical Fellowship, Columbia Poker Club.</div>
-      </div>
-
-      <h2>Experience</h2>
-      <div class="item">
-        <div class="row"><span class="title">Research Fellow</span><span class="date">Sep 2026 – Present</span></div>
-        <div class="sub"><a href="https://sparai.org/projects/f26/receloqseyoRh3URL/" target="_blank" rel="noopener">SPAR (Supervised Program for Alignment Research)</a> · Remote</div>
-        <div class="body"><ul>
-          <li>Build evaluation datasets that test whether humans working with AI “judges” can reliably oversee other AI systems, as part of a 100+ dataset leaderboard covering deception, jailbreak robustness, cultural bias, and computer-control mistakes.</li>
-          <li>Audit existing judge datasets for coverage gaps and create new ones to fill them, using sandwiching for ground truth.</li>
-          <li>Measure how easily judges are fooled by reward hacking under adversarial RL optimization.</li>
-        </ul></div>
-      </div>
-      <div class="item">
-        <div class="row"><span class="title">Data Science Intern</span><span class="date">Apr 2026 – Sep 2026</span></div>
-        <div class="sub">Mercor · San Francisco, CA</div>
-        <div class="body"><ul>
-          <li>Developed 10+ rubric-based scoring taxonomies that turn expert judgment on professional tasks into consistent criteria for evaluating and training LLMs (RLHF annotation schemas).</li>
-          <li>Drafted pass/fail criteria with acceptable and unacceptable example responses so expert reviewers score consistently.</li>
-          <li>Flagged edge cases (ambiguous, incomplete, or conflicting inputs) that ordinary prompts miss and added them to the rubrics.</li>
-          <li>Audited labeled data for reviewer disagreements and suggested guideline updates to raise inter-annotator agreement.</li>
-        </ul></div>
-      </div>
-      <div class="item">
-        <div class="row"><span class="title">Research Assistant</span><span class="date">Apr 2026 – Sep 2026</span></div>
-        <div class="sub">Duke University · Durham, NC</div>
-        <div class="body"><ul>
-          <li>Designed and built an LLM pipeline (GPT-5.5, OpenAI Batch API) that analyzed 18.7M words across 3,543 cable news transcripts (CNN, Fox, MSNBC; 2011–2025), one batch job per transcript.</li>
-          <li>Refined a 20-page coding protocol over 18 versions to reach ~99.4% accuracy on flagged cases with no missed cases; cleaned the data.</li>
-          <li>Built an auditable review workflow: 12,892 flagged candidates, 1,584 ambiguous (12.3%) sent to human review; found Fox disparages media at 10× CNN’s rate, 4× MSNBC’s.</li>
-        </ul></div>
-      </div>
-      <div class="item">
-        <div class="row"><span class="title">Leadership Seminar Scholar</span><span class="date">Jun 2025 – Aug 2025</span></div>
-        <div class="sub">University of Notre Dame · South Bend, IN</div>
-        <div class="body"><ul>
-          <li>Won a full-ride scholarship to Notre Dame’s “Inequality in America” seminar; conducted original meta-research on how the pharmaceutical industry shapes health policy, reviewing 15+ studies.</li>
-          <li>Ran regression analysis and visualizations in R linking industry practices to poverty outcomes, connecting to the seminar’s focus on economic inequality; presented at a symposium.</li>
-        </ul></div>
-      </div>
-      <div class="item">
-        <div class="row"><span class="title">Research Intern</span><span class="date">Jun 2023 – Sep 2025</span></div>
-        <div class="sub">University of Maryland, Baltimore · Baltimore, MD</div>
-        <div class="body"><ul>
-          <li>First-authored 2 studies, presented at the ASCPT Annual Meetings (2024, 2025); the 2025 poster won the Top Poster Award.</li>
-          <li>Built ML models (logistic regression, random forests) on 10 years of FDA adverse-event reports to predict serious outcomes in ADHD patients on stimulants; tuned with cross-validation; best model reached 0.75 AUC and 88% recall.</li>
-          <li>Modeled tacrolimus dose requirements and transplant outcomes in lung transplant recipients taking azole antifungals.</li>
-        </ul></div>
-      </div>
-
-      <h2>Skills &amp; Interests</h2>
-      <div class="item">
-        <div class="body"><ul>
-          <li><strong>Languages:</strong> Python, JavaScript, Java, SQL (PostgreSQL), R, HTML/CSS</li>
-          <li><strong>Tools &amp; ML:</strong> PyTorch, TransformerLens, NumPy, pandas, scikit-learn, Django, Linux; mech interp, LLM fine-tuning, RLHF</li>
-          <li><strong>Interests:</strong> Fencing (USA Fencing First Team All-American), Competitive Programming (USACO), History Olympiads, Open-Source</li>
-        </ul></div>
+    <section id="projects" class="block">
+      <div class="wrap">
+        <p class="eyebrow reveal">Projects</p>
+        <h2 class="reveal">Things I’ve built.</h2>
+        <div class="grid">
+          <a class="card reveal" href="https://github.com/bradca0/threshold" target="_blank" rel="noopener">
+            <span class="tag">Python · NumPy · SciPy · PyTorch</span>
+            <h3>Threshold</h3>
+            <p>Reproduces double descent on MNIST with random-feature regression, explains why the test-error peak happens (90% of it is variance), and shows tuned ridge cuts it from 88.8% to 12.3%.</p>
+            <span class="more">View on GitHub ›</span>
+          </a>
+          <a class="card reveal" href="https://mycurehope.org" target="_blank" rel="noopener">
+            <span class="tag">Django · PostgreSQL · JavaScript · TailwindCSS</span>
+            <h3>MyCureHope</h3>
+            <p>An open-source database of treatments, doctors, and hospitals used by 33,000+ people across 78 countries. I built the search and run the full stack.</p>
+            <span class="more">Visit site ›</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section id="page-publications" class="page">
-      <div class="pub">
-        <div class="ptitle">Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data</div>
-        <div class="venue">ASCPT Annual Meeting, 2025 · Washington, DC · Top Poster Award</div>
-        <div class="authors"><u>Cao, B.</u>, Lee, S., Naga, A., Gobburu, J., Dunn, A.</div>
-      </div>
-      <div class="pub">
-        <div class="ptitle">Predictive Modeling of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals</div>
-        <div class="venue">ASCPT Annual Meeting, 2024 · Colorado Springs, CO</div>
-        <div class="authors"><u>Cao, B.</u>, Gupta, P., Dunn, A.</div>
+    <section id="publications" class="block alt">
+      <div class="wrap">
+        <p class="eyebrow reveal">Publications</p>
+        <h2 class="reveal">Published work.</h2>
+        <div class="grid">
+          <div class="card reveal">
+            <span class="tag">ASCPT 2025 · Top Poster Award</span>
+            <h3>Leveraging Supervised Machine Learning to Identify Predictors of Serious Clinical Outcome with Stimulant Treatment from Real-World Data</h3>
+            <p class="authors"><u>Cao, B.</u>, Lee, S., Naga, A., Gobburu, J., Dunn, A. · Washington, DC</p>
+          </div>
+          <div class="card reveal">
+            <span class="tag">ASCPT 2024</span>
+            <h3>Predictive Modeling of Tacrolimus Dose Requirements and Transplantation Outcomes in Lung Transplant Recipients on Systemic Azole Antifungals</h3>
+            <p class="authors"><u>Cao, B.</u>, Gupta, P., Dunn, A. · Colorado Springs, CO</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <section id="skills" class="block">
+      <div class="wrap">
+        <p class="eyebrow reveal">Skills</p>
+        <h2 class="reveal">Tools of the trade.</h2>
+        <div class="skills">
+          <div class="card reveal">
+            <h3>Languages</h3>
+            <p>Python, JavaScript, Java, SQL (PostgreSQL), R, HTML/CSS</p>
+          </div>
+          <div class="card reveal">
+            <h3>Tools &amp; ML</h3>
+            <p>PyTorch, TransformerLens, NumPy, pandas, scikit-learn, Django, Linux; mech interp, LLM fine-tuning, RLHF</p>
+          </div>
+          <div class="card reveal">
+            <h3>Interests</h3>
+            <p>Fencing (USA Fencing First Team All-American), Competitive Programming (USACO), History Olympiads, Open-Source</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="block alt">
+      <div class="wrap">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="reveal">Say hello.</h2>
+        <p class="contact-lede reveal">I’m always excited to meet ambitious and smart people.</p>
+        <div class="contact-list">
+          <a class="contact-link reveal" href="mailto:bcao4049@gmail.com">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="label">bcao4049@gmail.com</span>
+            <span class="more">›</span>
+          </a>
+          <a class="contact-link reveal" href="https://github.com/bradca0" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span>
+            <span class="label">github.com/bradca0</span>
+            <span class="more">›</span>
+          </a>
+          <a class="contact-link reveal" href="https://www.linkedin.com/in/brad-cao-552b10218/" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></span>
+            <span class="label">LinkedIn</span>
+            <span class="more">›</span>
+          </a>
+          <a class="contact-link reveal" href="https://www.instagram.com/brad_ca00" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+            <span class="label">@brad_ca00</span>
+            <span class="more">›</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
-</div>
+
+  <footer>
+    <div class="wrap">
+      <span>Copyright © 2026 Brad Cao.</span>
+      <span><a href="mailto:bcao4049@gmail.com">bcao4049@gmail.com</a></span>
+    </div>
+  </footer>
 
 <script>
-  (function () {
-    var pages = ['about', 'experience', 'publications'];
-    function show() {
-      var id = location.hash.replace('#', '');
-      if (pages.indexOf(id) === -1) id = 'about';
-      pages.forEach(function (p) {
-        document.getElementById('page-' + p).classList.toggle('active', p === id);
-      });
-      document.querySelectorAll('nav a').forEach(function (a) {
-        a.classList.toggle('active', a.getAttribute('data-page') === id);
-      });
-      document.title = id === 'about' ? 'Brad Cao' : id.charAt(0).toUpperCase() + id.slice(1) + ' | Brad Cao';
-      window.scrollTo(0, 0);
-    }
-    window.addEventListener('hashchange', show);
-    show();
-  })();
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
 </script>
 </body>
 </html>
